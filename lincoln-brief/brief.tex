@@ -1,0 +1,63 @@
+% we want to make a cs brief
+\documentclass{lincolncsbrief}
+
+% packages
+\usepackage{blindtext}
+
+% module name and code
+\modulename{Advanced \LaTeX}
+\modulecode{CMP9999M}
+
+% assignment name and number
+\assignmentname{\LaTeX\, Class File}
+\assignmentnumber{1}
+
+% the weighting (percentage) of this assignment
+\weighting{60}
+
+\begin{document}
+
+	% make the brief header, with logo, title, assignment name/number and weightings
+	\makebriefheader
+		
+	% learning outcomes
+	\begin{learningoutcomes}
+		\learningoutcome{1}{The first learning outcome.}
+		\learningoutcome{2}{The second learning outcome.}
+	\end{learningoutcomes}
+	
+	% requirements for this assignment
+	\begin{requirements}
+		
+		\heading{Intro}
+		You \textbf{must} implement the following things:
+		\begin{itemize}
+			\item A class file for creating assignment briefs for the University of Lincoln, School of Computer Science.
+			\item A document which tests this class.
+		\end{itemize}
+		
+		
+		\heading{Class file}
+		Your class file must make use of \texttt{fifo-stack}, and the font must be from \texttt{txfonts}.
+				
+	\end{requirements}
+	
+	% default information -- useful information can also be custom-made with \begin{information} ... \end{information}
+	\defaultinformation
+	
+	% set paragraph spacing so that there is a space between paragraphs
+	\setparagraphspacing
+	
+	% submission instructions
+	\begin{submission}
+		The final deadline for submission of this work is included in the School Submission dates on Blackboard. The final submission must be in the form of a single ZIP file, submitted through the Blackboard upload area for this assessment item. 
+		
+		% lipsum
+		\blindtext
+		
+		\textbf{DO NOT} include this briefing document with your submission.
+	\end{submission}
+	
+	
+	
+\end{document}
