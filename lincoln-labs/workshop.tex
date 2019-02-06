@@ -1,0 +1,98 @@
+\documentclass{lincolncslab}
+
+% Set up the module name and the module code
+\modulename{Module name}
+\modulecode{CGP0000M}
+
+% Use outlines. This is used for bullet points.
+\usepackage{outlines}
+
+% Blind text, for lipsum
+\usepackage{blindtext}
+
+% Set up the workshop topic, and the workshop number.
+\labname{Workshop topic}
+\labnumber{1}
+
+%\sansserif
+
+\begin{document}
+	\makelabheader
+	
+	\section*{Introduction}
+	In this workshop, you are tasked to do blah. Here is some lipsum. \blindtext
+	
+	% page break here so the tasks are on another page
+	\pagebreak
+	
+	
+	
+	% The first task
+	\task{Create an empty workshop document}
+	
+	\begin{outline}
+		\1 Open up a new \LaTeX \, document, using \kbd{File $\rightarrow$ New File}.
+		\1 The first line of your file should be \kbd{\textbackslash documentclass\{lincolncslab\}}, making this document use the workshop template.
+		\1 Your document should contain a \kbd{\textbackslash begin\{document\}...\textbackslash end\{document\}} like the code seen below.
+			\2 Within this, you should place \kbd{\textbackslash makelabheader} to generate the document's header.
+		\1 Or, if you're lazy like me, you could just edit this file.
+	\end{outline}
+	
+	
+	
+	% A second task
+	\task{Providing workshop details}
+	
+	\begin{outline}
+		\1 This template has a few built-in macros to make your life easier when editing. These ones to be provided in the preamble, before \kbd{\textbackslash begin\{document\}}:
+			\2 \kbd{\textbackslash modulecode\{code\}} -- The code of the module this workshop belongs to. \emph{(e.g. CGP2012M)}
+			\2 \kbd{\textbackslash modulename\{code\}} -- The name of the module this workshop belongs to. \emph{(e.g. Games Programming)}
+			\2 \kbd{\textbackslash labname\{code\}} -- The name/description of this workshop. \emph{(e.g. Collision Detection)}			
+			\2 \kbd{\textbackslash labnumber\{code\}} -- The workshop number. \emph{(e.g. 3)}		
+		\1 These macros can be provided within the document:
+			\2 	\kbd{\textbackslash task\{description\}} -- Displays a new heading for a new task. You do not need to provide task numbers in here, these are generated automatically by \LaTeX.
+			\2 	\kbd{\textbackslash atask\{description\}} -- Displays a new heading for an additional task. You do not need to provide task numbers in here, these are generated automatically by \LaTeX.
+	\end{outline}
+	
+	\pagebreak
+	
+	% An additional third task
+	\atask{Other stuff}
+	
+	All the standard features of \LaTeX \, are supported within this workshop document. For example, you can easily typeset equations like this one: $\sum_{i = 0}^n{a^i + b^i}$. Or, you can include images fairly easily, like the UoL logo found in Figure \ref{fig:logo}.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1in]{logo}
+		\caption{The University of Lincoln crest.}
+		\label{fig:logo}
+	\end{figure}
+	
+	Furthermore, the listings package is included in the template by default. This makes including code into your document super easy. For more information, look up the \kbd{listings} package. Here is some nicely formatted code, provided in the document:
+	
+	\begin{lstlisting}[language={[Sharp]C}]
+	internal void add(int a, int b)
+	{
+		return (a + b);
+	}
+	
+	private void Main(string[] args)
+	{
+		Console.WriteLine(add(10, 5));
+	}
+	\end{lstlisting}
+	
+	Here is some python code, read from \kbd{example.py} in the same directory as this one:
+	
+	\lstinputlisting[language=Python]{example.py}
+	
+	
+	\atask{Other macros}
+	If you wish to format this document in a serif font, rather than a sans-serif font, then you can pass the \kbd{serif} option to the document class, like \kbd{\textbackslash documentclass[serif]\{lincolncsthesis\}}. This will format the document with \LaTeX's default serif font.
+	
+	An example of a formatted workshop is found in this folder as \kbd{workshop-example.tex}, to give you ideas.
+	
+	
+	
+	
+\end{document}

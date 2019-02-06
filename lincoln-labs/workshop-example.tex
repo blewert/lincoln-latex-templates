@@ -1,0 +1,79 @@
+\documentclass{lincolncslab}
+
+\modulename{Advanced Graphics}
+\modulecode{CGP9018M}
+
+\labname{Local illumination with GLSL}
+\labnumber{4}
+
+\begin{document}
+	\makelabheader
+	
+	\section*{Intro}
+	For this week's workshop content, you have two options. You can either work on your assignment or previous workshops, or you can complete the tasks set out in this workshop brief. These tasks mostly involve using an online GLSL editor to write shaders which perform local illumination on a 3D mesh. 
+	
+	\centering
+	\begin{Sbox}
+		\begin{minipage}{0.95\textwidth}
+			\emph{Please note that it is recommended that you finish all previous workshops before continuing with this one. This week's workshop requires the completion of workshops 1 to 3. If however, you still need any help, please ask one of the demonstrators for assistance!}
+		\end{minipage}
+	\end{Sbox}
+	\doublebox{\TheSbox}\raggedright
+	
+	
+	\pagebreak
+	
+	\task{Writing flat shaders}
+	Your first task is to load up \url{http://shdr.bkcore.com/}. Once you have navigated to this website, try to complete the following tasks.
+	
+	\begin{itemize}
+		\item Create a flat shader that renders every pixel of the object with a red colour.
+		\item Can you extend this bit of code to use a variable colour value? For example, can you easily change it to a blue colour? What data type would you use here?
+		\item Using the \kbd{time} variable, can you modify the colour of the object over time?
+		\item Can you change the colour of the object depending on the current screen-space coordinates (\kbd{gl\_Position})?
+	\end{itemize}
+	
+	\task{Adding in Lambertian reflectance}
+	Using the lecture slides as a guide, complete the following tasks.
+	
+	\begin{itemize}
+		\item Write a simple diffuse shader which uses $\mathbf{N} \bullet \mathbf{L}$. Your light direction can be any direction you wish to choose.
+		\item Can you control the intensity of the diffuse light by multiplying it by a scalar \kbd{float} value?
+		\item Add in an ambient light term, with an ambient light intensity.
+	\end{itemize}
+	
+	\task{Adding in Specular highlights}
+	Using the lecture slides as a guide, complete the following tasks.
+	
+	\begin{itemize}
+		\item Using your diffuse light completed in the previous task, add specular highlights to the final pixel value. You should use Phong's original reflection model which uses a reflected ray $\mathbf{R}$.
+		\item Can you convert this to use the Blinn--Phong model? (Using a halfway vector $\mathbf{H}$ instead of $\mathbf{R}$)
+		\item Can you control the intensity of the specular light with a variable?
+	\end{itemize}
+	
+	\task{Modifying the vertex shader}
+	Open up the vertex shader using the interface. Once you have done this, try to complete the following tasks.
+	
+	\begin{itemize}
+		\item Modify the vertex shader so that each vertex is `extruded' by a certain distance. (Hint: Think about how you could use the \emph{normal} to do this)
+		\item Can you modify this to extrude inwards instead of outwards?
+		\item Using the surface normal and vertex position, along with \kbd{sin(...)}, can you distort the position of vertices?
+	\end{itemize}
+	
+	\atask{Other tasks}
+	Once you have completed these tasks, can you:
+	
+	\begin{itemize}
+		\item Can you use the surface normal as the colour of currently rendered pixel? 
+		\item Create a chequerboard pattern on the object in screen-space?
+		\item Create a chequerboard pattern on the object in world-space?
+		\item Can you split the Phong--Blinn shading model into a separate function with parameters?
+		\item Implement rim lighting with no cutoff value? Can you modify this so that a cutoff value can be supplied which controls the width of the highlight?
+		\item Create an outline around the object using the rim equation?
+		\item Create glossy highlights using the modified rim equation?
+		\item Combine diffuse, specular and glossy highlights with a controllable diffuse colour?
+	\end{itemize}
+	
+	
+	
+\end{document}
