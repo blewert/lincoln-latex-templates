@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+		<script type="text/javascript">
+		window.addEventListener("load", function()
+		{
+			$("aside > article > h1")[0].contentEditable = "true";
+			$("aside > article > h2")[0].contentEditable = "true";
+			$("aside > article > h3")[0].contentEditable = "true";
+		});
+		</script>
+	</head>
+
+	<body>
+		<figure>
+			<aside>
+			</aside>
+			<img class="bg" src="bg.jpg"/>
+			<img class="logo" src="logo.png"/>
+		</figure>
+		<aside>
+			<article>
+				<h1>Module name</h1>
+				<h2><strong>Workshop #0</strong>: n/a</h2>
+				<h3>Instructions</h3>
+			</article>
+		</aside>
+	</body>
+</html>

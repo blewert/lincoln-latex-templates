@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700');
+
+:root
+{
+    --diagonal-start:55vw;
+}
+
+html, body
+{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-family: "Montserrat", sans-serif;
+}
+
+aside
+{
+  position:absolute;
+  top:0;
+  left:0;
+  height:100vh;
+  margin:0;
+  padding:0;
+  width:var(--diagonal-start);
+  background-color:black;
+  color:white;
+}
+
+aside > article
+{
+  margin-left:10vw;
+  margin-top:40vh;
+  transform:translateY(-50%);
+}
+
+
+.bg
+{
+    position:absolute;
+    top:0%;
+    left:calc(var(--diagonal-start) - 10vw);
+    z-index: -9;
+    height:100vh;
+    filter:sepia(40%) contrast(80%) brightness(120%);
+}
+
+.logo
+{
+  width:125px;
+  position:absolute;
+  top:calc(90vh - 125px + 2rem);
+  left:calc(95vw - 125px + 2rem);
+  background-color:black;
+  padding:1rem;
+  z-index:50;
+}
+
+article > h1
+{
+  margin:0;
+  font-size:52pt;
+  font-weight:bold;
+  padding:0;
+  text-transform:uppercase;
+}
+
+article > h2
+{
+  margin-top:3rem;
+  padding:0;
+  font-size:32pt;
+  font-weight:100;
+  color:#ffbf7b;
+}
+
+article > h3
+{
+	color:white;
+	font-size:24pt;
+	font-weight:100;
+}
+
+figure > aside
+{
+  left:calc(var(--diagonal-start) - 20vw);
+  width:20vw;
+  height:200vh;
+  transform:rotate(15deg) translateY(-50vh);
+}

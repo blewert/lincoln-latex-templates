@@ -21,6 +21,17 @@ The only thing you need to alter in this template is the text. If however, you w
 More information about macros that can be used is found in the `tex` file itself. 
 
 
+# Other templates 
+## Workshop announcements 
+Workshop announcements are provided as html files which can be loaded into a browser when a workshop is being delivered. 
+
+These are located in `workshop-announcements/computer-science` and `workshop-announcements/games-computing`. Furthermore, you can alter the background to whatever you wish, by replacing the `bg.jpg` file with your choice.
+
+You can notify students of which workshop is being ran, and brief instructions, through editable HTML elements. Just click on the text fields and edit to your required details. 
+
+Don't forget to press `F11` to go into full screen mode.
+
+
 
 
 
