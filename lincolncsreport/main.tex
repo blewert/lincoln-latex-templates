@@ -1,0 +1,32 @@
+% available font options (include "sans" to render in sans-serif mode):
+% - helvetica, txfonts, gentium, fira, sourceserif, sourcesans, stix
+%   garamond
+\documentclass[gentium]{lincolncsreport}
+
+% Put in your title & author name
+\title{An Example Report}
+\author{Joe Bloggs}
+
+\begin{document}
+
+% make header
+% -----------
+%\makeTitlePage    % logo in middle, title on top, author on bottom
+\makeTitlePageAlt  % logo on top, author in middle
+\makeTOC           % comment to disable table of contents
+% -----------
+
+% the document content starts here
+\blinddocument
+
+% test citations
+Citation~\cite{beringer2012review}
+
+% References
+% ----------
+\newpage
+\bibliographystyle{plain}
+\bibliography{references.bib}
+% ----------
+
+\end{document}

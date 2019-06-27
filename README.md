@@ -21,6 +21,12 @@ The only thing you need to alter in this template is the text. If however, you w
 More information about macros that can be used is found in the `tex` file itself. 
 
 
+### Computer Science report template
+The report template can be found in `lincolncsreport/main.tex`. This template was initially designed for Transfer Viva reports, however, it could be used for a number of purposes. You could in theory use this as a thesis template! To use this template, just set the documentclass to `lincolncsreport` and make sure the `.cls` file is in your project's root folder (along with your `main.tex`). Please do not delete `lincolncsreport/logo.pdf`.
+
+More information such as template options can be found in `main.tex`. If you really want to tweak the template, it should be fairly easy to modify. It might also help you understand how the template is built!
+
+
 # Other templates 
 ## Workshop announcements 
 Workshop announcements are provided as html files which can be loaded into a browser when a workshop is being delivered. 
