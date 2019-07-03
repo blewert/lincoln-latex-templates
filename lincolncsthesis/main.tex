@@ -1,0 +1,86 @@
+\documentclass[harvard]{lincolncsthesis}
+
+\thesisSupervisor{Dr. Mantis Toboggan}
+\thesisDegree{Master of Science by Research}
+\thesisSubmissionDate{July 2019}
+
+\addbibresource{references.bib}
+
+\title{\bfseries Your thesis title}
+\author{Your Full Name}
+
+\begin{document}
+
+\maketitle[logo-first]
+
+% \cleardoublepage
+% \layout
+
+\begin{blankpage}
+\itshape Dedicated to someone
+\end{blankpage}
+
+\begin{acknowledgements}
+\blindtext
+\blindtext
+
+\footnote{bleg bleg bleg}
+\end{acknowledgements}
+
+
+\begin{abstract}
+\blindtext
+\end{abstract}
+
+\thesisTables
+\thesisBodyStart
+
+\chapter{\texttt{lincolncsthesis} guide}
+
+\section{a}
+\subsection{a}
+\subsubsection{ab}
+
+\section{Definable variables}
+The \texttt{lincolncsthesis} template has a number of definable variables which can be redefined to change the format of the thesis. These are listed below.
+
+\vspace{1cm}
+\begin{tabular}{l|p{1in}|l}
+    \bfseries Command & \bfseries Description & \bfseries Example  \\ \hline
+    \textbackslash thesisLogoPath & Sets the path to the logo for the title. & \textbackslash thesisLogoPath\{img/your-logo-here.jpg\}  \\
+    \textbackslash thesisSubmissionDate & Manually sets the submission date of the thesis, for the title page. & \textbackslash thesisSubmissionDate\{July, 2019\}  \\
+    \textbackslash thesisDegree & Sets the name of the degree for this thesis. & \textbackslash thesisDegree\{Doctor of Philosophy\}  \\
+    \textbackslash thesisProgramme & Sets the name of your degree programme/subject. & \textbackslash thesisProgramme\{Biology\}  \\
+    \textbackslash thesisSupervisor & Sets the name of your supervisor. & \textbackslash thesisSupervisor\{Dr. Mantis Toboggan\}  \\
+    \textbackslash thesisSchool & Sets the name of your school. & \textbackslash thesisSchool\{School of Chemistry\}  \\
+    \textbackslash thesisCollege & Sets the name of your college. & \textbackslash thesisCollege\{College of Science\}  \\
+    \textbackslash thesisUniversity & Sets the name of your university. & \textbackslash thesisUniversity\{University of Lincoln\}  \\
+\end{tabular}
+
+\section{Making the title page}
+To make the title, you just need to write \texttt{\textbackslash maketitle} at the beginning of your document, like any other LaTeX document. You can alternatively pass the optional argument \texttt{[logo-first]} to render the title page with the logo on top, like some thesis styles. 
+
+Here are some citations~\citep{williams2017time}. And here is another~\cite{williams2016modular}.
+
+To do this, just write \texttt{\textbackslash maketitle[logo-first]} in place of \texttt{\textbackslash maketitle}.
+
+\section{Testing some math}
+Here are two equations:
+
+
+    
+\begin{align}
+a &= b + 1 \\
+\frac{\hbar^2}{2m}\nabla^2\Psi + V(\mathbf{r})\Psi
+&= -i\hbar \frac{\partial\Psi}{\partial t}    
+\end{align}
+
+
+And here is some text with some nice inline math, $(x, y)$ wow $\gamma$ so cool $\rho$.
+
+\setlength\bibitemsep{0.35cm}
+\setstretch{1.0}
+\printbibliography[title=References]
+
+
+\end{document}
