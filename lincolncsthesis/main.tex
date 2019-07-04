@@ -17,7 +17,18 @@
 % \layout
 
 \begin{blankpage}
-\itshape Dedicated to someone
+	\chapterTitle{A blank page}
+	Here is an optional page environment you could use for things like:
+	\begin{itemize}
+		\item Your own custom preamble chapters (use \texttt{\textbackslash chapterTitle} for titles!)
+		\item ``This work is dedicated to...''
+		\item A copyright notice
+		\item Additional notes
+		\item Quotes
+		\item List of publications
+		\item An actual blank page
+	\end{itemize}
+	You can pass an optional parameter to this environment with the value \texttt{c} to centre this text vertically on the page.
 \end{blankpage}
 
 \begin{acknowledgements}
@@ -78,9 +89,14 @@ a &= b + 1 \\
 
 And here is some text with some nice inline math, $(x, y)$ wow $\gamma$ so cool $\rho$.
 
-\setlength\bibitemsep{0.35cm}
-\setstretch{1.0}
-\printbibliography[title=References]
+
+\chapter{Another chapter}
+\blindtext[10]
+
+\printReferences
+
+% You can also provide a custom bibliography title like so:
+% \printReferences[My custom title]
 
 
 \end{document}

@@ -1,7 +1,59 @@
+ %%
+ %% lincolncsthesis.cls
+ %% Copyright 2019 Benjamin Williams <bwilliams@lincoln.ac.uk>
+ %%
+ %% A LaTeX template for typesetting research degree theses
+ %% according to the University of Lincoln School of Computer Science
+ %% thesis guidelines.
+ %%
+ %% It is worth noting that the main inspiration (and small snippets of code) 
+ %% for this template was Cameron Gray's bangorcsthesis template. 
+ %%
+ %% -----------------------------------------
+ %%
+ %% This work may be distributed and/or modified under the
+ %% conditions of the LaTeX Project Public License, either version 1.3
+ %% of this license of (at your option) any later version.
+ %% The latest version of this license is in
+ %% http://www.latex-project.org/lppl.txt
+ %% and version 1.3 or later is part of all distributions of LaTeX
+ %% version 2005/12/01 or later.
+ %%
+
+
+% We're gonna be defining variables as long globals
+% (because they might wanna split these up with extra lines)
+\def\lxdef{\long\xdef}
+
+% This class name
+\def\@classname {lincolncsthesis}
+
+
+
+% METADATA AND OPTIONS
+% --------------------
+
+% Define thesis template version and other metadata
+\gdef\@templateVersion{1.0.2}
+\gdef\@templateDate{2019/07/04}
+\gdef\@templateAuthor{Benjamin Williams}
+
+% It provides this class
+\ProvidesClass{\@classname}[\@templateDate \@templateVersion \@templateAuthor]
+
+% We need LaTeX2e at least
 \NeedsTeXFormat{LaTeX2e}
 
 % Article class
 \LoadClass[12pt]{report}
+
+
+
+
+
+% PACKAGES
+% --------
+
 
 % Packages
 \RequirePackage{amsmath}
@@ -47,15 +99,6 @@
   \@dtm@year
 }
 
-
-% We're gonna be defining variables as long globals
-% (because they might wanna split these up with extra lines)
-\def\lxdef{\long\xdef}
-
-
-% This class name
-\def\@classname {lincolncsthesis}
-
 % Another handy macro to test if there's an option
 \def\ifClassOption [#1]#2 {
     \@ifclasswith{\@classname}{#1}{#2}{\empty}
@@ -67,6 +110,8 @@
 }
 
 
+% THESIS TEMPLATE VARIABLES
+% -------------------------
 
 
 % Define variables relevant to this thesis
@@ -88,6 +133,10 @@
 \newcommand{\thesisUniversity}[1]{\xdef\@universityname{#1}}
 
 
+
+
+
+
 % START OF THESIS
 % --------------
 
@@ -97,14 +146,22 @@
     \fancyfoot[R]{\footnotesize\textbf{\thepage}}%    
 }
 
+\fancypagestyle{mainStyle}{
+	\renewcommand{\headrulewidth}{0pt}%
+	\fancyhf{}%
+	\fancyfoot[R]{\footnotesize\emph{\leftmark} \hspace{0.25cm} \footnotesize\textbf{\thepage}}%    
+}
+
+
 \newcommand{\thesisBodyStart}{
 
     % Clear the page so we don't number the last page
     \cleardoublepage
     
     % Set page numbering back to 1, 2, 3 .. 
-    \pagenumbering{arabic}
+    \pagenumbering{arabic} 
 }
+
 
 
 % TABLE OF CONTENTS, FIGURES AND TABLES
@@ -151,6 +208,7 @@
 
 
 
+
 % ACKNOWLEDGEMENTS
 % ----------------
 
@@ -168,7 +226,7 @@
 \newcommand{\afterTitlePage}{
 
     % Set margins for the rest of the thesis. UoL guidelines 
-    % state that: [left > 40mm], [others > 15mm]
+    % state that: [left >= 40mm], [others >= 15mm]
     \newgeometry{
         nohead, 
         paper=a4paper,
@@ -182,10 +240,7 @@
 
     % Set spacing and reset numbering
     \pagenumbering{roman}
-    
-    % Set page style to plain
-    \pagestyle{plain}
-    
+            
     % Set double spacing (from cleanthesis.sty)
     \setstretch{1.5}
     \clubpenalty = 10000
@@ -247,12 +302,12 @@
     \vspace{1cm}
     {\footnotesize \@date \par}
     
-\end{titlepage}
+	\end{titlepage}
 }
 
+% The alternate title page: logo, then title, then author
 \def \@altTitlePage {
     \begin{titlepage}
-
     
     % Make the logo
     \makeatletter
@@ -280,7 +335,7 @@
     \vspace{1cm}
     {\footnotesize \@date \par}
     
-\end{titlepage}
+	\end{titlepage}
 }
 
 \newcommand{\beforeTitlePage}{
@@ -299,19 +354,25 @@
 }
 
 
-
+% The default title page style is the title, logo, author style
 \def \@defaultTitlePage {\@titlepage}
 
+
+% Lets renew the make title command so we don't have to 
+% make a custom one
 \RenewDocumentCommand{\maketitle}{o}{%
 
+  % Call function for before title page
   \beforeTitlePage
   
+  % Then check which title page style to use
   \IfNoValueTF{#1}
     {\@defaultTitlePage}
     {\ifthenelse{\equal{#1}{logo-first}}
         {\@altTitlePage}
         {\@defaultTitlePage}}
-        
+    
+  % Call function for after title page       
   \afterTitlePage
 }
 
@@ -323,10 +384,20 @@
 % TITLE / CHAPTERS / FIGURES / TITLESEC SPACING
 % ---------------------------------------------
 
+% Set the chapter title style
 \titleformat{\chapter}[display]
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{0pt}{\Huge}
 
+% And space it out a bit
 \titlespacing*{\chapter} {0pt}{0pt}{20mm}
+
+% A fake chapter title command to emulate chapter titles
+% without actually adding a chapter
+\newcommand{\chapterTitle}[1]{
+	\vspace*{-20mm} 
+	{\normalfont\huge\bfseries#1 \par} 
+	\vspace*{20mm}
+}
 
 
 
@@ -337,7 +408,7 @@
 % -----------
 
 % Fake harvard referencing, instead of using natbib -- because
-% natbib makes biblatex blow up
+% natbib makes biblatex blow up.
 \def\@importHarvard {
     \RequirePackage[
         backend=biber,
@@ -372,7 +443,18 @@
 \ifClassOptionElse[harvard]{\@importHarvard}{\@importBibLaTeX}
 
 
-
+% Command for printing out references list
+\newcommand{\printReferences}[1][References]{
+	
+	% Set some spacing up between the items
+	\setlength\bibitemsep{0.35cm}
+	
+	% Set the line height (of actual items) to 1.0
+	\setstretch{1.0}
+	
+	% Print out the bibliography with the given title
+	\printbibliography[title=#1]
+}
 
 
 
@@ -383,12 +465,27 @@
 % BLANK PAGE / QUOTE PAGE
 % -----------------------
 
+% For quote pages, copyright notices, or whatever else
 \newenvironment{blankpage}[1][\unskip]{%
+	
+	% Check if [c] is specified, if so, then 
+	% make it vertically align.. if not, then
+	% just clear a double page and write some stuff
     \ifthenelse{\equal{#1}{c}}{
         \cleardoublepage
         \topskip0pt
         \vspace*{\fill}
-    }{\vspace*{1in}}
+    }{
+    \cleardoublepage
+    \topskip0pt
+    \vspace*{1in}
+    }
 }{
         \vspace*{\fill}
 }
+
+
+% Set the page style to the main style. Set up the chapter
+% mark style so that it shows the title of the chapter only.
+\pagestyle{mainStyle}
+\renewcommand{\chaptermark}[1]{\markboth{{#1}}{}}
